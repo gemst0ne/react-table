@@ -1,0 +1,40 @@
+{
+  "name": "react-table",
+  "version": "1.0.0",
+  "description": "react spreadsheet component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gemst0ne/react-table.git"
+  },
+  "keywords": [
+    "react",
+    "excel",
+    "spreadsheet",
+    "component"
+  ],
+  "author": "wonseok chang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gemst0ne/react-table/issues"
+  },
+  "homepage": "https://github.com/gemst0ne/react-table#readme",
+  "devDependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
