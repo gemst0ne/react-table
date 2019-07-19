@@ -1,0 +1,13 @@
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    position: relative;
+}
+.resize-handle{
+   width: 8px;
+   height: 100%;
+   position: absolute;
+   right: -4px;
+   cursor: col-resize;
+   z-index: 1;
+}
