@@ -1,7 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import './Table.css';
-// import Cell from  './component/cell';
+import Cell from '../Cell';
 
 interface IColumnItem {
     title: string;
@@ -30,6 +29,8 @@ class Table extends React.Component<ITableProps, ITableStates>{
         super(props);
         this.state={...props };
     }
+
+    
 
     handleDrag(index,event){
         // console.log(event.target.closest("th").getBoundingClientRect());
@@ -75,15 +76,10 @@ class Table extends React.Component<ITableProps, ITableStates>{
             {
                 this.state.data.map((item)=>(
                     <tr key={item.key}>
-                        <td><span>{item.date}</span></td>
-                        <td><span>{item.amount}</span></td>
-                        <td><span>{item.type}</span></td>
-                        {/*<Cell value={item.type}/>*/}
-                        {/*<td><span onClick={this.onHandleFocus}>{item.type}</span>*/}
-                            {/*<input style={{border:0,outline:0,display:"none"}} value={item.type} onChange={ this.onHandleInputChange.bind(this,item.key)} type="text"/>*/}
-                        {/*</td>*/}
-                        {/*<td><span><input style={{border:0,outline:0}} type="text"/></span></td>*/}
-                        <td><span>{item.note}</span></td>
+                        <Cell value={item.date}/>
+                        <Cell value={item.amount}/>
+                        <Cell value={item.type}/>
+                        <Cell value={item.note}/>
                     </tr>
                 ))
             }
