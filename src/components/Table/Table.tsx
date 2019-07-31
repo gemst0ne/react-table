@@ -84,7 +84,7 @@ class Table extends React.Component<ITableProps, ITableStates>{
                         this.state.columns.map((item, index, array) => (
                             <th key={index}>
                                 <span>{item.title}</span>
-                                { (index < array.length-1) ? <span style={{backgroundColor:"red"}} className="resize-handle" onDrag={this.handleDrag.bind(this,index)} draggable={true}></span> : '' }
+                                { (index < array.length-1) ? <span className="resize-handle" onDrag={this.handleDrag.bind(this,index)} draggable={true}></span> : '' }
                             </th>
 
                         ))
