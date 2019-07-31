@@ -1,4 +1,11 @@
 input {
     border:0;
     outline:0;
+    /* width:20px; */
+    /* position: relative; */
+}
+
+input[type="text"]
+{
+    font-size:15px;
 }

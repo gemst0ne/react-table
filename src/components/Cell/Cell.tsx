@@ -2,15 +2,14 @@ import * as  React from "react";
 import './Cell.css'
 
 
-interface ICellProps { value: string | number }
+interface ICellProps { index:number, type:string, value: string | number, callback?: (index:number,value:any) => void }
 interface ICellState { isFocused: boolean, value: string }
 
 class Cell extends React.Component<ICellProps, ICellState>{
   state = {
     isFocused: false,
     value:'',
-  };
-
+    };
   cellInput = null;
 
   static getDerivedStateFromProps = (nextProps, prevState) =>{
@@ -37,13 +36,13 @@ class Cell extends React.Component<ICellProps, ICellState>{
   };
 
   onhandleChange = (e:any) => {
-      this.setState({
-        value: e.target.value
-      })
+
+      let obj={};
+      obj[this.props.type]=e.target.value;
+      this.props.callback(this.props.index, obj);
   }
 
   render(){
-      console.log("update")
         return <td>
             <span style={{display: (this.state.isFocused ? "none":"block")}} onClick={this.onhandleClick}>
               {this.state.value}

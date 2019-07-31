@@ -27,6 +27,7 @@ interface ITableStates { columns: IColumnArray; data: IDataArray }
 class Table extends React.Component<ITableProps, ITableStates>{
     constructor(props){
         super(props);
+        console.log(props)
         this.state={...props };
     }
 
@@ -37,7 +38,7 @@ class Table extends React.Component<ITableProps, ITableStates>{
         // console.log("clientX", event.clientX);
         // console.log("right", event.target.closest("th").getBoundingClientRect().right);
         let width = (event.clientX - event.target.closest("th").getBoundingClientRect().right);
-        event.target.height=1000
+        // event.target.height=1000
         if(event.target.closest("th").getBoundingClientRect().x > event.clientX  ) return;
         this.onTitleChange(index, width)
     }
@@ -47,6 +48,24 @@ class Table extends React.Component<ITableProps, ITableStates>{
         var index = columns.findIndex((obj,index) => index === indexNum);
         columns[index].width = columns[index].width +  width;
         this.setState({columns : columns});
+    }
+
+    updateData = (index:number, value:any) =>{
+
+        const {data} = this.state;
+        const targetIndex = data.findIndex(item => item.key === index)
+
+        const newData = {
+            ...data[targetIndex],
+            ...value
+        }
+        this.setState({
+           data:[
+               ...data.slice(0,targetIndex),
+               newData,
+               ...data.slice(targetIndex+1, data.length)
+           ]
+        })
     }
 
     render() {
@@ -76,10 +95,10 @@ class Table extends React.Component<ITableProps, ITableStates>{
             {
                 this.state.data.map((item)=>(
                     <tr key={item.key}>
-                        <Cell value={item.date}/>
-                        <Cell value={item.amount}/>
-                        <Cell value={item.type}/>
-                        <Cell value={item.note}/>
+                        <Cell index={item.key} value={item.date} type={"date"} callback={this.updateData}/> 
+                        <Cell index={item.key} value={item.amount} type={"amount"} callback={this.updateData}/>
+                        <Cell index={item.key} value={item.type} type={"type"} callback={this.updateData}/>
+                        <Cell index={item.key} value={item.note} type={"note"} callback={this.updateData}/>
                     </tr>
                 ))
             }
